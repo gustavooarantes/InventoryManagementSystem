@@ -1,11 +1,18 @@
 package com.gustavooarantes.inventorymanagement.models;
 
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+@Getter
+@Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "Products")
 public class Product {
     @Id
+    @Column(name = "product_id")
     private String productId;
 
     @Column(name = "product_name", nullable = false)
@@ -27,10 +34,10 @@ public class Product {
     private int minimumQuantity;
 
     @ManyToOne
-    @JoinColumn(name = "category_id", referencedColumnName = "category_id")
+    @JoinColumn(name = "category_id")
     private Category category;
 
     @ManyToOne
-    @JoinColumn(name = "supplier_id", referencedColumnName = "supplier_id")
+    @JoinColumn(name = "supplier_id")
     private Supplier supplier;
 }
